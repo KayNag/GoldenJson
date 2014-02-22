@@ -45,7 +45,7 @@ import android.util.Log;
  */
 public class ZendeskJSONFetchHelper {
 
-	private static final String Zendesk = "http://lukaspetrik.cz/filemanager/tmp/reader/data.xml";
+	private static final String Zendesk = "http://assignment.gae.golgek.mobi/api/v1/items";
 	private static final int HTTP_STATUS_OK = 200;
 	private static byte[] buff = new byte[1024];
 	private static final String logTag = "ZendeskJSONFetchHelper";
