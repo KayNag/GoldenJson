@@ -2,17 +2,19 @@ package kay.golden.json.adapters;
 
 import java.util.ArrayList;
 
+import kay.golden.json.List_view_selection;
 import kay.golden.json.R;
 import kay.golden.json.ZendeskFace;
 import kay.golden.json.ZendeskFace.MyViewHolder;
 import kay.golden.json.data.ZendeskData;
 import kay.golden.json.tasks.ZendeskIconTask;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,7 +32,8 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 	private ZendeskIconTask imgFetcher;
 	private LayoutInflater layoutInflater;
 	private ArrayList<ZendeskData> ticketsdata;
-
+	
+	MyViewHolder holder;
 	public ZendeskDataAdapter(ZendeskFace a, ZendeskIconTask i,
 			LayoutInflater l, ArrayList<ZendeskData> data) {
 		this.activity = a;
@@ -62,11 +65,13 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 
 	@Override
 	public View getView(int pos, View convertView, ViewGroup parent) {
-		MyViewHolder holder;
+		
 		if (convertView == null) {
 			convertView = layoutInflater.inflate(R.layout.ticketdetail, parent,
 					false);
 			holder = new MyViewHolder();
+		
+			
 			holder.subject = (TextView) convertView.findViewById(R.id.subject);
 			holder.ticket_no = (TextView) convertView
 					.findViewById(R.id.ticket_no);
@@ -81,8 +86,9 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 		}
 
 		convertView.setOnClickListener(this);
-
-		ZendeskData position = ticketsdata.get(pos);
+		ZendeskData position  = ticketsdata.get(pos);
+		
+	
 		holder.ticketsdata = position;
 		if (position.getSubject() != null) {
 			holder.subject.setText("Title : " + position.getSubject());
@@ -105,15 +111,30 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 		} else {
 			holder.icon.setImageResource(R.drawable.filler_icon);
 		}
+		
 
 		return convertView;
 	}
 
-	@Override
-	public void onClick(View v) {
-
-		Log.d(debugTag, "OnClick pressed.");
+	
+	
+	public void onClick(AdapterView<?> parent, View view,int position, long id) {
+		
+		Intent in = new Intent(this.activity,List_view_selection.class);
+		
+		String title = position.getSubject();
+		String Id = position.getTicketno();
+		String Link = position.getDescription();
+		 in.putExtra("name",title);
+         in.putExtra("email",Id);
+         in.putExtra("link",Link);
+         this.activity.startActivity(in);
 
 	}
 
-}
+		
+		
+		
+
+	}
+

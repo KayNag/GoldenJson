@@ -78,9 +78,8 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 				String subject = ticketsdetail.getString("title");
 				String ticketno = ticketsdetail.getString("id");
 				String ticketdescription = ticketsdetail.getString("link");
-				for(int j = 0 ; j<ticketdescription.length();j++)
-				{
-					String insidejson = null;
+				
+			String insidejson = null;
 					
 					try {
 						
@@ -94,7 +93,7 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 						this.activity.alert("Unable to find tickets. Try again later.");
 						return;
 					}
-					String a = insidejson;
+					
 					JSONObject details = new JSONObject(insidejson);
 					
 					 authour = details.getString("author");
@@ -102,7 +101,7 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 					 image = details.getString("image");
 					
 										
-				}
+				
 				
 				ticketsdata.add(new ZendeskData(subject, ticketno,image,ticketdescription));
 			}
