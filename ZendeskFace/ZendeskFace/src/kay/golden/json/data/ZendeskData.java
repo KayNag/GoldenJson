@@ -8,7 +8,7 @@ public class ZendeskData {
 	private String ticket_status;
 	private String description;
 
-	public ZendeskData(String subject, String number,String desc) {
+	public ZendeskData(String subject, String number,String imageUrl,String desc) {
 		super();
 		this.subject = subject;
 		this.ticket_no = number;
@@ -16,6 +16,8 @@ public class ZendeskData {
 		
 		this.description = desc;
 	}
+
+	
 
 	public String getSubject() {
 		return subject;

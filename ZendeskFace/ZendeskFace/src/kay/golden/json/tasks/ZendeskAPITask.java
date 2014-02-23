@@ -73,14 +73,38 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 
 			
 			for (int i = 0; i < tickets.length(); i++) {
+				String authour,price,image = null;
 				JSONObject ticketsdetail = tickets.getJSONObject(i);
 				String subject = ticketsdetail.getString("title");
-				String ticketdescription = ticketsdetail
-						.getString("link");
 				String ticketno = ticketsdetail.getString("id");
-
-				ticketsdata.add(new ZendeskData(subject, ticketno, 
-						 ticketdescription));
+				String ticketdescription = ticketsdetail.getString("link");
+				for(int j = 0 ; j<ticketdescription.length();j++)
+				{
+					String insidejson = null;
+					
+					try {
+						
+						 insidejson = ZendeskJSONFetchHelper.downloadFromServer("http://assignment.gae.golgek.mobi" + ticketdescription);
+						
+					} catch (Exception e) {
+						this.cancel(true);
+						
+					}					
+					if (insidejson.length() == 0) {
+						this.activity.alert("Unable to find tickets. Try again later.");
+						return;
+					}
+					String a = insidejson;
+					JSONObject details = new JSONObject(insidejson);
+					
+					 authour = details.getString("author");
+					 price = details.getString("price");
+					 image = details.getString("image");
+					
+										
+				}
+				
+				ticketsdata.add(new ZendeskData(subject, ticketno,image,ticketdescription));
 			}
 
 		} catch (JSONException e) {

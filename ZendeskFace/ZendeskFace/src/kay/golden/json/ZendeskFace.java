@@ -41,7 +41,7 @@ public class ZendeskFace extends Activity {
 		ZendeskAPITask lfmTask = new ZendeskAPITask(ZendeskFace.this);
 		try {
 
-			lfmTask.execute();
+			lfmTask.execute("http://assignment.gae.golgek.mobi/api/v1/items");
 		} catch (Exception e) {
 			lfmTask.cancel(true);
 			alert(getResources().getString(R.string.no_ticket));

@@ -70,8 +70,7 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 			holder.subject = (TextView) convertView.findViewById(R.id.subject);
 			holder.ticket_no = (TextView) convertView
 					.findViewById(R.id.ticket_no);
-			holder.ticket_status = (TextView) convertView
-					.findViewById(R.id.ticket_status);
+			
 			holder.ticket_description = (TextView) convertView
 					.findViewById(R.id.ticket_description);
 			holder.icon = (ImageView) convertView.findViewById(R.id.album_icon);
@@ -86,16 +85,15 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 		ZendeskData position = ticketsdata.get(pos);
 		holder.ticketsdata = position;
 		if (position.getSubject() != null) {
-			holder.subject.setText("Subject : " + position.getSubject());
+			holder.subject.setText("Title : " + position.getSubject());
 
 		} else {
-			holder.subject.setText("Subject : No Subject");
+			holder.subject.setText("Title : No Subject");
 		}
 
-		holder.ticket_no.setText("Ticket Number : " + position.getTicketno());
-		holder.ticket_status.setText("Ticket Status : "
-				+ position.getTicketstatus());
-		holder.ticket_description.setText("Description : "
+		holder.ticket_no.setText("Id: " + position.getTicketno());
+		
+		holder.ticket_description.setText("Link : " + "http://assignment.gae.golgek.mobi"
 				+ position.getDescription());
 
 		if (position.getImageUrl() != null) {
