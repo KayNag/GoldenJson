@@ -48,7 +48,7 @@ public class ZendeskFace extends Activity {
 			lfmTask.cancel(true);
 			alert(getResources().getString(R.string.no_ticket));
 		}
-
+		
 	
 	}
 
@@ -69,7 +69,7 @@ public class ZendeskFace extends Activity {
 	 */
 
 	public static class MyViewHolder {
-		public TextView subject, ticket_no, ticket_status, ticket_description;
+		public TextView title,authour,link;
 		public ImageView icon;
 		public ZendeskData ticketsdata;
 	}
@@ -80,4 +80,6 @@ public class ZendeskFace extends Activity {
 				this.imgFetcher, this.layoutInflator, this.ticketsdata));
 	}
 
+	
+	
 }

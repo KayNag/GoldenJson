@@ -75,16 +75,16 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 			for (int i = 0; i < tickets.length(); i++) {
 				String authour,price,image = null;
 				JSONObject ticketsdetail = tickets.getJSONObject(i);
-				String subject = ticketsdetail.getString("title");
-				String ticketno = ticketsdetail.getString("id");
-				String ticketdescription = ticketsdetail.getString("link");
+				String title = ticketsdetail.getString("title");
+				String id = ticketsdetail.getString("id");
+				String link = ticketsdetail.getString("link");
 				
 			String insidejson = null;
 					
 					try {
 						
-						 insidejson = ZendeskJSONFetchHelper.downloadFromServer("http://assignment.gae.golgek.mobi" + ticketdescription);
-						
+						 insidejson = ZendeskJSONFetchHelper.downloadFromServer("http://assignment.gae.golgek.mobi" + link);
+						 						
 					} catch (Exception e) {
 						this.cancel(true);
 						
@@ -103,7 +103,7 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 										
 				
 				
-				ticketsdata.add(new ZendeskData(subject, ticketno,image,ticketdescription));
+				ticketsdata.add(new ZendeskData(title,id,image,authour,link,price));
 			}
 
 		} catch (JSONException e) {

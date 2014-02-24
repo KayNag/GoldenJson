@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -30,18 +31,17 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 	private static final String debugTag = "ZendeskDataAdapter";
 	private ZendeskFace activity;
 	private ZendeskIconTask imgFetcher;
+	ZendeskData position;
 	private LayoutInflater layoutInflater;
 	private ArrayList<ZendeskData> ticketsdata;
 	
-	MyViewHolder holder;
 	public ZendeskDataAdapter(ZendeskFace a, ZendeskIconTask i,
 			LayoutInflater l, ArrayList<ZendeskData> data) {
 		this.activity = a;
 		this.imgFetcher = i;
 		this.layoutInflater = l;
 		this.ticketsdata = data;
-		int aas = data.size();
-	}
+			}
 
 	@Override
 	public int getCount() {
@@ -65,18 +65,19 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 
 	@Override
 	public View getView(int pos, View convertView, ViewGroup parent) {
-		
+		MyViewHolder holder;
 		if (convertView == null) {
 			convertView = layoutInflater.inflate(R.layout.ticketdetail, parent,
 					false);
-			holder = new MyViewHolder();
+			 holder = new MyViewHolder();
 		
 			
-			holder.subject = (TextView) convertView.findViewById(R.id.subject);
-			holder.ticket_no = (TextView) convertView
+			holder.title = (TextView) convertView.findViewById(R.id.subject);
+			
+			holder.authour = (TextView) convertView
 					.findViewById(R.id.ticket_no);
 			
-			holder.ticket_description = (TextView) convertView
+			holder.link = (TextView) convertView
 					.findViewById(R.id.ticket_description);
 			holder.icon = (ImageView) convertView.findViewById(R.id.album_icon);
 
@@ -86,21 +87,21 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 		}
 
 		convertView.setOnClickListener(this);
-		ZendeskData position  = ticketsdata.get(pos);
+		 position  = ticketsdata.get(pos);
 		
 	
 		holder.ticketsdata = position;
-		if (position.getSubject() != null) {
-			holder.subject.setText("Title : " + position.getSubject());
+		if (position.gettitle() != null) {
+			holder.title.setText("Title : " + position.gettitle());
 
 		} else {
-			holder.subject.setText("Title : No Subject");
+			holder.title.setText("Title : No Subject");
 		}
 
-		holder.ticket_no.setText("Id: " + position.getTicketno());
+		holder.authour.setText("Authour " + position.getauthour());
 		
-		holder.ticket_description.setText("Link : " + "http://assignment.gae.golgek.mobi"
-				+ position.getDescription());
+		holder.link.setText("Link : " + "http://assignment.gae.golgek.mobi"
+				+ position.getlink());
 
 		if (position.getImageUrl() != null) {
 			holder.icon.setTag(position.getImageUrl());
@@ -118,23 +119,31 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 
 	
 	
-	public void onClick(AdapterView<?> parent, View view,int position, long id) {
+	
+	
+	public void onClick(View v) {
+		
+		if (v instanceof View) {
+			MyViewHolder holder = (MyViewHolder) v.getTag();
 		
 		Intent in = new Intent(this.activity,List_view_selection.class);
+			
+		String title = holder.ticketsdata.gettitle();
+		String authour =  holder.ticketsdata.getauthour();
+		String price = holder.ticketsdata.getprice();
+		String Image = holder.ticketsdata.getImageUrl();
 		
-		String title = position.getSubject();
-		String Id = position.getTicketno();
-		String Link = position.getDescription();
 		 in.putExtra("name",title);
-         in.putExtra("email",Id);
-         in.putExtra("link",Link);
+         in.putExtra("writer",authour);
+         in.putExtra("rate",price);
+         in.putExtra("image",Image);
+         
          this.activity.startActivity(in);
 
 	}
 
 		
 		
-		
 
 	}
-
+}

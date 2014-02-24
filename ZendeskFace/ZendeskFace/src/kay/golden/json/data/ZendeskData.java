@@ -2,37 +2,37 @@ package kay.golden.json.data;
 
 public class ZendeskData {
 
-	private String subject;
-	private String ticket_no;
+	private String title;
+	private String id;
 	private String imageUrl;
-	private String ticket_status;
-	private String description;
+	private String authour;
+	private String link;
+	private String price;
 
-	public ZendeskData(String subject, String number,String imageUrl,String desc) {
+	public ZendeskData(String title, String id,String imageUrl,String authour,String link,String price) {
 		super();
-		this.subject = subject;
-		this.ticket_no = number;
+		this.title = title;
+		this.id = id;
 		this.imageUrl = imageUrl;
-		
-		this.description = desc;
+		this.authour = authour;
+		this.link = link;
+		this.price = price;
 	}
 
-	
-
-	public String getSubject() {
-		return subject;
+	public String gettitle() {
+		return title;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void settitle(String title) {
+		this.title = title;
 	}
 
-	public String getTicketno() {
-		return ticket_no;
+	public String getid() {
+		return id;
 	}
 
-	public void setTicketno(String number) {
-		this.ticket_no = number;
+	public void setid(String id) {
+		this.id = id;
 	}
 
 	public String getImageUrl() {
@@ -43,20 +43,28 @@ public class ZendeskData {
 		this.imageUrl = imageUrl;
 	}
 
-	public String getTicketstatus() {
-		return ticket_status;
+	public String getauthour() {
+		return authour;
 	}
 
-	public void setTicketstatus(String status) {
-		this.ticket_status = status;
+	public void setauthour(String authour) {
+		this.authour = authour;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getlink() {
+		return link;
 	}
 
-	public void setDescription(String desc) {
-		this.description = desc;
+	public void setlink(String link) {
+		this.link = link;
 	}
 
+	public String getprice() {
+		return price;
+	}
+
+	public void setprice(String price) {
+		this.price = price;
+	}
+	
 }
