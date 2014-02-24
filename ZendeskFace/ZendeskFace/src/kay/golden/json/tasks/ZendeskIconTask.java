@@ -41,11 +41,11 @@ public class ZendeskIconTask {
 		}
 	}
 
-	private class ImageTask extends AsyncTask<String, Void, Drawable> {
+	public class ImageTask extends AsyncTask<String, Void, Drawable> {
 		private String s_url;
 
 		@Override
-		protected Drawable doInBackground(String... params) {
+		public Drawable doInBackground(String... params) {
 			s_url = params[0];
 			InputStream istr;
 			try {

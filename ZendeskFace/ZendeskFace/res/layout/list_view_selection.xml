@@ -1,34 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:padding="10dp">
-  <!-- Name Label -->
-  <TextView android:id="@+id/name_label"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25dip"
-            android:textStyle="bold"
-            android:paddingTop="10dip"
-            android:paddingBottom="10dip"
-            android:textColor="#43bd00"/>
-  <!-- Email Label -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp" >
 
-  <ImageView
-      android:id="@+id/imageView1"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:src="@drawable/blank" />
+    <!-- Name Label -->
 
-  <TextView android:id="@+id/email_label"
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:textColor="@color/zendesk"
+        android:textSize="25dip"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/imddetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_below="@+id/title"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="5dip"
+        android:background="@drawable/imagebg"
+        android:padding="3dip"
+        android:paddingTop="10dip" >
+
+        <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#acacac"/>
-  <!-- Mobile Label -->
-  <TextView android:id="@+id/mobile_label"
-      		android:layout_width="fill_parent"
-      		android:layout_height="wrap_content"
-      		android:textStyle="bold"/>
-</LinearLayout>
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+    
+      <TextView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imddetail"
+        android:text="DETAILS"
+        android:textSize="20dip"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
+
+       <TextView
+        android:id="@+id/titlehead"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:textColor="@color/black"
+        android:textSize="18dip"
+        android:paddingTop="10dip" />
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlehead"
+        android:textColor="@color/black"
+        android:textSize="18dip"
+        android:paddingTop="10dip" />
+
+    <TextView
+        android:id="@+id/authour"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id"
+        android:textColor="@color/black"
+        android:textSize="18dip"
+        android:paddingTop="10dip" 
+         />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/authour"
+        android:textColor="@color/black"
+        android:textSize="18dip"
+        android:paddingTop="10dip" 
+         />
+
+  
+
+</RelativeLayout>

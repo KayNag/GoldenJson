@@ -1,37 +1,73 @@
 package kay.golden.json;
 
+import java.io.InputStream;
+
+import kay.golden.json.tasks.ZendeskIconTask.ImageTask;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+public class List_view_selection extends Activity {
+	private ImageTask imgFetcher;
 
-public class List_view_selection  extends Activity {
-	
-	// JSON node keys
-	private static final String TAG_NAME = "name";
-	private static final String TAG_EMAIL = "email";
-	private static final String TAG_PHONE_MOBILE = "link";
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_view_selection);
-        
-        // getting intent data
-        Intent in = getIntent();
-        
-        // Get JSON values from previous intent
-        String name = in.getStringExtra(TAG_NAME);
-        String email = in.getStringExtra(TAG_EMAIL);
-        String mobile = in.getStringExtra(TAG_PHONE_MOBILE);
-        
-        // Displaying all values on the screen
-        TextView lblName = (TextView) findViewById(R.id.name_label);
-        TextView lblEmail = (TextView) findViewById(R.id.email_label);
-        TextView lblMobile = (TextView) findViewById(R.id.mobile_label);
-        
-        lblName.setText(name);
-        lblEmail.setText(email);
-        lblMobile.setText(mobile);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.list_view_selection);
+
+		// getting intent data
+		Intent in = getIntent();
+
+		// Get JSON values from previous intent
+		String title = in.getStringExtra("name");
+		String authour = in.getStringExtra("writer");
+		String image = in.getStringExtra("image");
+		String price = in.getStringExtra("rate");
+		String id = in.getStringExtra("id");
+		// Displaying all values on the screen
+		TextView lbltitle = (TextView) findViewById(R.id.title);
+		TextView lblauthour = (TextView) findViewById(R.id.authour);
+		TextView lblprice = (TextView) findViewById(R.id.price);
+		TextView lblid = (TextView) findViewById(R.id.id);
+		TextView lbltitlehead = (TextView) findViewById(R.id.titlehead);
+		
+		new DownloadImageTask((ImageView) findViewById(R.id.imageView1))
+        .execute(image);
+		lbltitle.setText(title);
+		lblid.setText	  	  ("Id       :"+id);
+		lbltitlehead.setText  ("Title    :"+title);
+		lblauthour.setText    ("Authour  :"+authour);
+		lblprice.setText      ("Price    :"+price);
+	}
+}
+class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    ImageView bmImage;
+
+    public DownloadImageTask(ImageView bmImage) {
+        this.bmImage = bmImage;
+    }
+
+    protected Bitmap doInBackground(String... urls) {
+        String urldisplay = urls[0];
+        Bitmap mIcon11 = null;
+        try {
+            InputStream in = new java.net.URL(urldisplay).openStream();
+            mIcon11 = BitmapFactory.decodeStream(in);
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+        return mIcon11;
+    }
+
+    protected void onPostExecute(Bitmap result) {
+        bmImage.setImageBitmap(result);
     }
 }

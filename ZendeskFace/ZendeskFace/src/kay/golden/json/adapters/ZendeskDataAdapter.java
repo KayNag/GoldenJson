@@ -132,11 +132,13 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 		String authour =  holder.ticketsdata.getauthour();
 		String price = holder.ticketsdata.getprice();
 		String Image = holder.ticketsdata.getImageUrl();
+		String id = holder.ticketsdata.getid();
 		
 		 in.putExtra("name",title);
          in.putExtra("writer",authour);
          in.putExtra("rate",price);
          in.putExtra("image",Image);
+         in.putExtra("id",id);
          
          this.activity.startActivity(in);
 

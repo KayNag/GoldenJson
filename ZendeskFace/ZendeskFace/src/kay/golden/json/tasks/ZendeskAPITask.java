@@ -51,6 +51,7 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 		try {
 			Log.d(debugTag, "Background:" + Thread.currentThread().getName());
 			String result = ZendeskJSONFetchHelper.downloadFromServer(params);
+			
 			return result;
 		} catch (Exception e) {
 			return new String();
@@ -84,6 +85,8 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 					try {
 						
 						 insidejson = ZendeskJSONFetchHelper.downloadFromServer("http://assignment.gae.golgek.mobi" + link);
+						 
+						 
 						 						
 					} catch (Exception e) {
 						this.cancel(true);
