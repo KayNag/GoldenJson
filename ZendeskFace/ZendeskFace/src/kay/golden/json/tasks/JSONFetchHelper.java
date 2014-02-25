@@ -30,11 +30,11 @@ import android.util.Log;
  * @author Kay Nag
  * 
  */
-public class ZendeskJSONFetchHelper {
+public class JSONFetchHelper {
 
 		private static final int HTTP_STATUS_OK = 200;
 	private static byte[] buff = new byte[1024];
-	private static final String logTag = "ZendeskJSONFetchHelper";
+	private static final String logTag = "JSONFetchHelper";
 
 	public static class ApiException extends Exception {
 		private static final long serialVersionUID = 1L;

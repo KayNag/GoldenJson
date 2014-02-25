@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="app_name">Zendesk Techtest</string>
-	<string name="looking_for_tickets">Searching for tickets </string>
-	<string name="no_ticket">No ticket found</string>
+	<string name="app_name">GoldenGekko</string>
+	<string name="looking_for_tickets">Searching,Please wait for few seconds</string>
+	<string name="no_ticket">No details found</string>
 </resources>

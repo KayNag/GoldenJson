@@ -2,7 +2,7 @@ package kay.golden.json;
 
 import java.io.InputStream;
 
-import kay.golden.json.tasks.ZendeskIconTask.ImageTask;
+import kay.golden.json.tasks.IconTask.ImageTask;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,10 +41,10 @@ public class List_view_selection extends Activity {
 		new DownloadImageTask((ImageView) findViewById(R.id.imageView1))
         .execute(image);
 		lbltitle.setText(title);
-		lblid.setText	  	  ("Id       :"+id);
-		lbltitlehead.setText  ("Title    :"+title);
-		lblauthour.setText    ("Authour  :"+authour);
-		lblprice.setText      ("Price    :"+price);
+		lblid.setText	  	  (id);
+		lbltitlehead.setText  (title);
+		lblauthour.setText    (authour);
+		lblprice.setText      (price);
 	}
 }
 class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

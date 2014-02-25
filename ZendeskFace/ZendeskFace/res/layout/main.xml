@@ -3,6 +3,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="@drawable/stylecombine"
+        android:src="@drawable/listhead" />
  
     <ListView
         android:id="@+id/ticket_list"
@@ -11,5 +18,7 @@
         android:divider="#b5b5b5"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/stylecombine" />
+    
+    
  
 </LinearLayout>

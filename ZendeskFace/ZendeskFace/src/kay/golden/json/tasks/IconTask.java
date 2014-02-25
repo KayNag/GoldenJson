@@ -18,7 +18,7 @@ import android.widget.ImageView;
  * 
  * @author Kay Nag
  */
-public class ZendeskIconTask {
+public class IconTask {
 
 	private static final String debugTag = "ImageWorker";
 
@@ -26,7 +26,7 @@ public class ZendeskIconTask {
 	private static Drawable DEFAULT_ICON = null;
 	private BaseAdapter adapt;
 
-	public ZendeskIconTask(Context ctx) {
+	public IconTask(Context ctx) {
 		imageCache = new HashMap<String, Drawable>();
 	}
 

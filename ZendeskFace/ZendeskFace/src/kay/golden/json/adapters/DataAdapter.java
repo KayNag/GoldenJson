@@ -6,8 +6,8 @@ import kay.golden.json.List_view_selection;
 import kay.golden.json.R;
 import kay.golden.json.ZendeskFace;
 import kay.golden.json.ZendeskFace.MyViewHolder;
-import kay.golden.json.data.ZendeskData;
-import kay.golden.json.tasks.ZendeskIconTask;
+import kay.golden.json.data.Data;
+import kay.golden.json.tasks.IconTask;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -26,17 +26,17 @@ import android.widget.TextView;
  * @author Kay Nag
  * 
  */
-public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
+public class DataAdapter extends BaseAdapter implements OnClickListener {
 
-	private static final String debugTag = "ZendeskDataAdapter";
+	private static final String debugTag = "DataAdapter";
 	private ZendeskFace activity;
-	private ZendeskIconTask imgFetcher;
-	ZendeskData position;
+	private IconTask imgFetcher;
+	Data position;
 	private LayoutInflater layoutInflater;
-	private ArrayList<ZendeskData> ticketsdata;
+	private ArrayList<Data> ticketsdata;
 	
-	public ZendeskDataAdapter(ZendeskFace a, ZendeskIconTask i,
-			LayoutInflater l, ArrayList<ZendeskData> data) {
+	public DataAdapter(ZendeskFace a, IconTask i,
+			LayoutInflater l, ArrayList<Data> data) {
 		this.activity = a;
 		this.imgFetcher = i;
 		this.layoutInflater = l;
@@ -74,10 +74,9 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 			
 			holder.title = (TextView) convertView.findViewById(R.id.subject);
 			
-			holder.authour = (TextView) convertView
-					.findViewById(R.id.ticket_no);
+		
 			
-			holder.link = (TextView) convertView
+			holder.authour = (TextView) convertView
 					.findViewById(R.id.ticket_description);
 			holder.icon = (ImageView) convertView.findViewById(R.id.album_icon);
 
@@ -100,8 +99,7 @@ public class ZendeskDataAdapter extends BaseAdapter implements OnClickListener {
 
 		holder.authour.setText("Authour " + position.getauthour());
 		
-		holder.link.setText("Link : " + "http://assignment.gae.golgek.mobi"
-				+ position.getlink());
+	
 
 		if (position.getImageUrl() != null) {
 			holder.icon.setTag(position.getImageUrl());

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import kay.golden.json.R;
 import kay.golden.json.ZendeskFace;
-import kay.golden.json.data.ZendeskData;
+import kay.golden.json.data.Data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,18 +21,18 @@ import android.util.Log;
  * 
  * @author Kay Nag
  */
-public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
+public class APITask extends AsyncTask<String, Integer, String> {
 	private ProgressDialog progDialog;
 	private Context context;
 	private ZendeskFace activity;
-	private static final String debugTag = "ZendeskAPITask";
+	private static final String debugTag = "APITask";
 
 	/**
 	 * Construct a task
 	 * 
 	 * @param activity
 	 */
-	public ZendeskAPITask(ZendeskFace activity) {
+	public APITask(ZendeskFace activity) {
 		super();
 		this.activity = activity;
 		this.context = this.activity.getApplicationContext();
@@ -48,9 +48,10 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 
 	@Override
 	protected String doInBackground(String... params) {
+		
 		try {
 			Log.d(debugTag, "Background:" + Thread.currentThread().getName());
-			String result = ZendeskJSONFetchHelper.downloadFromServer(params);
+			String result = JSONFetchHelper.downloadFromServer(params);
 			
 			return result;
 		} catch (Exception e) {
@@ -60,10 +61,10 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
-
-		ArrayList<ZendeskData> ticketsdata = new ArrayList<ZendeskData>();
-
 		progDialog.dismiss();
+		ArrayList<Data> ticketsdata = new ArrayList<Data>();
+
+		
 		if (result.length() == 0) {
 			this.activity.alert("Unable to find tickets. Try again later.");
 			return;
@@ -71,7 +72,7 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 
 		try {
 			JSONArray tickets = new JSONArray(result);
-
+			
 			
 			for (int i = 0; i < tickets.length(); i++) {
 				String authour,price,image = null;
@@ -84,7 +85,7 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 					
 					try {
 						
-						 insidejson = ZendeskJSONFetchHelper.downloadFromServer("http://assignment.gae.golgek.mobi" + link);
+						 insidejson = JSONFetchHelper.downloadFromServer("http://assignment.gae.golgek.mobi" + link);
 						 
 						 
 						 						
@@ -104,17 +105,19 @@ public class ZendeskAPITask extends AsyncTask<String, Integer, String> {
 					 image = details.getString("image");
 					
 										
+					 
 				
-				
-				ticketsdata.add(new ZendeskData(title,id,image,authour,link,price));
+				ticketsdata.add(new Data(title,id,image,authour,link,price));
 			}
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		this.activity.settickets(ticketsdata);
 
 	}
+	
+	
 }

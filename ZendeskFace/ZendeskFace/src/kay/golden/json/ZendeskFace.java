@@ -2,10 +2,10 @@ package kay.golden.json;
 
 import java.util.ArrayList;
 
-import kay.golden.json.adapters.ZendeskDataAdapter;
-import kay.golden.json.data.ZendeskData;
-import kay.golden.json.tasks.ZendeskAPITask;
-import kay.golden.json.tasks.ZendeskIconTask;
+import kay.golden.json.adapters.DataAdapter;
+import kay.golden.json.data.Data;
+import kay.golden.json.tasks.APITask;
+import kay.golden.json.tasks.IconTask;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,11 +24,11 @@ import android.widget.Toast;
  */
 public class ZendeskFace extends Activity {
 
-	private ArrayList<ZendeskData> ticketsdata;
+	private ArrayList<Data> ticketsdata;
 	private ListView ticket_list;
 	private LayoutInflater layoutInflator;
 
-	private ZendeskIconTask imgFetcher;
+	private IconTask imgFetcher;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,10 @@ public class ZendeskFace extends Activity {
 		setContentView(R.layout.main);
 
 		this.ticket_list = (ListView) findViewById(R.id.ticket_list);
-		this.imgFetcher = new ZendeskIconTask(this);
+		this.imgFetcher = new IconTask(this);
 		this.layoutInflator = LayoutInflater.from(this);
 
-		ZendeskAPITask lfmTask = new ZendeskAPITask(ZendeskFace.this);
+		APITask lfmTask = new APITask(ZendeskFace.this);
 		try {
 
 			lfmTask.execute("http://assignment.gae.golgek.mobi/api/v1/items");
@@ -71,12 +71,12 @@ public class ZendeskFace extends Activity {
 	public static class MyViewHolder {
 		public TextView title,authour,link;
 		public ImageView icon;
-		public ZendeskData ticketsdata;
+		public Data ticketsdata;
 	}
 
-	public void settickets(ArrayList<ZendeskData> ticketsdata) {
+	public void settickets(ArrayList<Data> ticketsdata) {
 		this.ticketsdata = ticketsdata;
-		this.ticket_list.setAdapter(new ZendeskDataAdapter(this,
+		this.ticket_list.setAdapter(new DataAdapter(this,
 				this.imgFetcher, this.layoutInflator, this.ticketsdata));
 	}
 

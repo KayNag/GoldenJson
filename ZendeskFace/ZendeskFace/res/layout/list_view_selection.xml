@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignLeft="@+id/imddetail"
+    android:layout_alignParentTop="true"
+    android:background="@color/white" >
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="10dp" >
@@ -10,14 +18,12 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerInParent="false"
-        android:layout_centerVertical="false"
         android:paddingBottom="10dip"
         android:paddingTop="10dip"
-        android:textColor="@color/zendesk"
+        android:textColor="@color/green"
         android:textSize="25dip"
         android:textStyle="bold" />
 
@@ -40,53 +46,127 @@
     </LinearLayout>
     
       <TextView
-        android:id="@+id/head"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/imddetail"
-        android:text="DETAILS"
-        android:textSize="20dip"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/black" />
+          android:id="@+id/head"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="false"
+          android:layout_below="@+id/imddetail"
+          android:layout_centerInParent="true"
+          android:paddingTop="20dip"
+          android:text="DETAILS"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:textColor="@color/green"
+          android:textSize="20dip" />
+
+      <TextView
+          android:id="@+id/titleheadtopic"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/head"
+          android:background="@drawable/rowselector"
+          android:paddingTop="10dip"
+          android:text="TITLE"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:textColor="@color/green"
+          android:textSize="20dip" />
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/titleheadtopic"
+          android:background="@color/greenlight" />
+      
 
        <TextView
         android:id="@+id/titlehead"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/head"
+        android:layout_below="@+id/titleheadtopic"
         android:textColor="@color/black"
         android:textSize="18dip"
         android:paddingTop="10dip" />
+       
+       <TextView
+           android:id="@+id/titleidtopic"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/titlehead"
+           android:background="@drawable/rowselector"
+           android:paddingTop="10dip"
+           android:text="ID"
+           android:textAppearance="?android:attr/textAppearanceLarge"
+           android:textColor="@color/green"
+           android:textSize="20dip" />
+
+        <View
+          android:layout_width="fill_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/titleidtopic"
+          android:background="@color/greenlight" />
+       
     <TextView
         android:id="@+id/id"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titlehead"
+        android:layout_below="@+id/titleidtopic"
         android:textColor="@color/black"
         android:textSize="18dip"
         android:paddingTop="10dip" />
 
+     <TextView
+         android:id="@+id/titleauthourtopic"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/id"
+         android:background="@drawable/rowselector"
+         android:paddingTop="10dip"
+         android:text="AUTHOUR"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="@color/green"
+         android:textSize="20dip" />
+
+      <View
+          android:layout_width="fill_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/titleauthourtopic"
+          android:background="@color/greenlight" />
     <TextView
         android:id="@+id/authour"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/id"
+        android:layout_below="@+id/titleauthourtopic"
         android:textColor="@color/black"
         android:textSize="18dip"
         android:paddingTop="10dip" 
          />
 
+ <TextView
+     android:id="@+id/titlepricetopic"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:layout_below="@+id/authour"
+     android:background="@drawable/rowselector"
+     android:paddingTop="10dip"
+     android:text="PRICE"
+     android:textAppearance="?android:attr/textAppearanceLarge"
+     android:textColor="@color/green"
+     android:textSize="20dip" />
+
+   <View
+          android:layout_width="fill_parent"
+          android:layout_height="1dp"
+          android:layout_below="@+id/titlepricetopic"
+          android:background="@color/greenlight" />
     <TextView
         android:id="@+id/price"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/authour"
+        android:layout_below="@+id/titlepricetopic"
         android:textColor="@color/black"
         android:textSize="18dip"
         android:paddingTop="10dip" 
          />
-
-  
+   
 
 </RelativeLayout>
+</ScrollView>

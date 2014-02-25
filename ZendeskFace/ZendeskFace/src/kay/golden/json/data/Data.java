@@ -1,6 +1,6 @@
 package kay.golden.json.data;
 
-public class ZendeskData {
+public class Data {
 
 	private String title;
 	private String id;
@@ -9,7 +9,7 @@ public class ZendeskData {
 	private String link;
 	private String price;
 
-	public ZendeskData(String title, String id,String imageUrl,String authour,String link,String price) {
+	public Data(String title, String id,String imageUrl,String authour,String link,String price) {
 		super();
 		this.title = title;
 		this.id = id;

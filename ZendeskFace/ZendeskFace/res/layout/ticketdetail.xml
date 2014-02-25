@@ -24,44 +24,29 @@
     </LinearLayout>
  
     <!-- Title Of Song-->
+
     <TextView
         android:id="@+id/subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-       
-        android:textColor="#040404"
-        android:typeface="sans"
+        android:textColor="@color/goldengekko"
         android:textSize="15dip"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:typeface="sans" />
  
     <!-- Artist Name -->
+
     <TextView
         android:id="@+id/ticket_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/subject"
-        android:textColor="#343434"
-        android:textSize="10dip"
         android:layout_marginTop="1dip"
         android:layout_toRightOf="@+id/thumbnail"
-        android:text="Just gona stand there and ..." />
- 
-    <!-- Rightend Duration -->
-    <TextView
-        android:id="@+id/ticket_no"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/ticket_description"
-        android:gravity="right"
-        android:text="5:45"
-        android:layout_marginRight="5dip"
-        android:textSize="10dip"
-        android:textColor="#10bcc9"
-        android:textStyle="bold"/>
- 
-        
+        android:text="Just gona stand there and ..."
+        android:textColor="@color/green"
+        android:textSize="10dip" />
  
 </RelativeLayout>

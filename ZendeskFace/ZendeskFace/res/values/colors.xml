@@ -27,5 +27,9 @@
   <color name="viewfinder_frame">#ff000000</color>
   <color name="viewfinder_laser">#ffff0000</color>
   <color name="viewfinder_mask">#60000000</color>
-  <color name="zendesk">#769e00</color>
+  <color name="blue">#38C0F4</color>
+  <color name="green">#669900</color>
+  <color name="orange">#FF8800</color>
+  <color name="greenlight">#D5FD5B</color>
+  <color name="goldengekko">#a3ce2d</color>
 </resources>
